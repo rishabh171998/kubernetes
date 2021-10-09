@@ -1,0 +1,9 @@
+sudo : required
+services:
+    - docker
+before_install:
+  - openssl aes-256-cbc -K $encrypted_4475b9b777d1_key -iv $encrypted_4475b9b777d1_iv -in k8s-learn-328508-31d5e07f94aa.json.enc -out /app/k8s-learn-328508-31d5e07f94aa.json -d
+  - curl https://sdk.cloud.google.com | bash > /dev/null
+  - source $HOME/google-cloud-sdk/path.bash.inc
+  - gcloud components update kubectl
+  -  gcloud auth activate-service-account --key-file k8s-learn-328508-31d5e07f94aa.json
